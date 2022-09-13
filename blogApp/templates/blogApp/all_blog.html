@@ -1,0 +1,31 @@
+
+{% extends 'portfolioApp/base.html' %}
+
+{% block content %}
+    <div class="row justify-content-center mb-3 gx-0">
+        <div class="col-md-3 blog"><h1 class="display-5">Blog</h1></div>
+
+        <div class="col-md-6 allblog font detailme" >
+            {% for item in blog %}
+
+            <a class="bloglink" href="{% url 'blog:details' item.id %}"><h3 class="line">{{ item.title }}</h3></a>
+
+            {% load i18n %}
+            {% language 'en' %}
+            <h8 class="font">{{ item.date|date:"M - d Y" }}</h8>
+            {% endlanguage %}
+
+            <p class="font">{{ item.text|striptags|truncatechars:70}}</p>  
+            <br>
+            {% endfor %}
+            
+        </div>
+
+        <div class="col-md-3 counter">           
+            <h5 class="font">Counter: {{ blog.count }} blog{{  blog.count|pluralize:"s" }} </h5>        
+        </div>        
+    </div>   
+
+
+{% endblock %}
+

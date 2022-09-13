@@ -1,0 +1,58 @@
+
+{% extends 'portfolioApp/base.html' %}
+
+    {% block content %}
+
+    {% load static %}
+
+    <br>
+    <br>
+    <div class="row justify-content-center mb-3 gx-0">
+        <div class="col-md-9 text-center">
+        <h1 class="display-5"></h1>
+    </div>
+    
+    <br>   
+    <div class="row justify-content-center my-3 gx-0">
+        <div class="col-3">
+            
+        <a class="nav-link" href="{% static 'portfolioAPP/me.png' %}" ><img src={% static 'PortfolioApp/logo.png' %}  class="img-fluid center" alt="me" ></a>
+        </div>
+    </div>
+
+    <div class="row gx-0">
+        {% for item in portfolio %}
+        <div class="col-lg-6 col-md-5 text-center">  
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <h3 class="font">{{ item.title }}</h3>
+
+            <p class="font">{{ item.description }}</p>
+
+            {% if item.url %}
+            <a target=”_blank” href="{{ item.url }}"><img src="{{ item.image.url }}"  height="200"></a>
+        
+            {% else %}
+            <img  src="{{ item.image.url }}"  height="200">
+
+            {% endif %}
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+
+        {% endfor %}
+
+
+    </div>
+    {% endblock %}
+
